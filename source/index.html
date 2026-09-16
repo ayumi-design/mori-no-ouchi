@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#eaf4fa"><title>ほおばまきちゃんの森のおうち</title><meta name="description" content="ほおばまきちゃん、きのこ王子、にんじん兄さん、じゃがおじ。ちいさな箱庭で過ごす、のんびりしたひととき。"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%2387b8da'/%3E%3Cpath d='M7 16L16 8l9 8v10H7z' fill='%23fff9e8'/%3E%3Cpath d='M14 20h5v6h-5z' fill='%23e8a4b4'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="app">
+<header><a class="brand" href="./" aria-label="ほおばまきちゃんの森のおうち ホーム"><span class="brand-mark">⌂</span><span>森のなかの<span class="brand-second">ちいさなおうち</span></span></a><span class="header-note">なんでもない日が、いちばん。</span><button id="pause" class="pause" aria-label="動きを一時停止" aria-pressed="false"><span id="pause-icon">Ⅱ</span><span id="pause-label">ひとやすみ</span></button></header>
+<main>
+<section class="room-area" aria-label="森のなかまの箱庭">
+<div class="room-top"><span class="room-tag">きょうも、いっしょ。</span><span class="weather">☀ <span>ぽかぽか日和</span></span></div>
+<div class="room" id="room"><img id="room-image" src="assets/room.webp" alt="窓から光がさす、暖炉と窓際の椅子がある小さな箱庭の部屋" draggable="false"><div id="characters"></div><div id="effects" aria-hidden="true"></div><div class="loading" id="loading">みんな、準備中…</div><div class="paused-note" id="paused-note" hidden>ちょっと、ひとやすみ。</div></div>
+<div class="room-bottom"><span class="live-mark"></span><span id="scene-status" role="status">それぞれの、のんびり時間</span><span class="tap-hint">タップで、なでなで</span></div>
+</section>
+<aside class="sidebar">
+<div class="intro"><span class="eyebrow">LITTLE ROOM</span><h1>ちいさな部屋の、<br>いつもの4人。</h1><p>歩いて、きのこを採って、お昼寝。<br>今日はなにして過ごそう？</p></div>
+<div class="residents"><h2>おへやのなかま <span>4人</span></h2><button class="resident" data-person="0"><span class="avatar pink" id="avatar-0"></span><span class="resident-info"><strong>ほおばまきちゃん</strong><span id="status-0">のんびり</span></span><span class="resident-detail">♡</span></button><button class="resident" data-person="1"><span class="avatar blue" id="avatar-1"></span><span class="resident-info"><strong>きのこ王子</strong><span id="status-1">のんびり</span></span><span class="resident-detail">♡</span></button><button class="resident" data-person="2"><span class="avatar yellow" id="avatar-2"></span><span class="resident-info"><strong>にんじん兄さん</strong><span id="status-2">のんびり</span></span><span class="resident-detail">♡</span></button><button class="resident" data-person="3"><span class="avatar potato" id="avatar-3"></span><span class="resident-info"><strong>じゃがおじ</strong><span id="status-3">のんびり</span></span><span class="resident-detail">♡</span></button></div>
+<div class="moment"><span class="moment-title">✧ いまのひとこま</span><p id="moment-text">なんでもない、のどかな一日。</p></div>
+</aside>
+</main>
+<section class="action-area" aria-label="みんなと過ごす"><div class="action-caption"><strong>なにしよう？</strong><span>気ままに、のんびり。</span></div><div class="actions"><button class="action snack" data-action="eat"><span class="action-symbol">🍪</span><span>おやつ</span></button><button class="action play" data-action="forage"><span class="action-symbol">🍄</span><span>あそぶ</span></button><button class="action sleep" data-action="sleep"><span class="action-symbol">☾</span><span>おひるね</span></button><button class="action auto active" data-action="auto" aria-pressed="true"><span class="action-symbol">✧</span><span>おまかせ</span></button></div></section>
+<footer><span>何もしなくても、みんなは気ままに過ごします。</span><span>森のおうち・試作</span></footer>
+</div><script src="app.js"></script>
+</body></html>
