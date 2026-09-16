@@ -8,7 +8,7 @@
 /* Requested UI text and furniture resting behavior */.action-caption strong{color:#000000}.resting img{animation:breathUpright 2.8s infinite ease-in-out}@keyframes breathUpright{50%{transform:translateY(2%) scale(.99,.98)}}</style></head>
 <body>
 <div class="app">
-<header><a class="brand" href="./" aria-label="ほおばまきちゃんの森のおうち ホーム"><span class="brand-mark">⌂</span><span>森のなかの<span class="brand-second">ちいさなおうち</span></span></a><span class="header-note">なんでもない日が、いちばん。</span><button id="sound" class="pause sound" aria-label="音をオフにする" aria-pressed="true"><span id="sound-icon">♪</span><span id="sound-label">音 ON</span></button><button id="pause" class="pause" aria-label="動きを一時停止" aria-pressed="false"><span id="pause-icon">Ⅱ</span><span id="pause-label">ひとやすみ</span></button></header>
+<header><a class="brand" href="./" aria-label="ほおばまきちゃんの森のおうち ホーム"><span class="brand-mark">⌂</span><span>森のなかの<span class="brand-second">ちいさなおうち</span></span></a><span class="header-note">なんでもない日が、いちばん。</span><button id="sound" class="pause sound" aria-label="音をオンにする" aria-pressed="false"><span id="sound-icon">×</span><span id="sound-label">音 OFF</span></button><button id="pause" class="pause" aria-label="動きを一時停止" aria-pressed="false"><span id="pause-icon">Ⅱ</span><span id="pause-label">ひとやすみ</span></button></header>
 <main>
 <section class="room-area" aria-label="森のなかまの箱庭">
 <div class="room-top"><span class="room-tag">きょうも、いっしょ。</span><span class="weather">☀ <span>ぽかぽか日和</span></span></div>
@@ -30,7 +30,7 @@ const calls=[['いっしょに！','えへへ','みーつけた！'],['ごきげ
 const people=names.map((name,i)=>({name,i,x:[.41,.57,.72,.56][i],y:[.65,.7,.65,.84][i],tx:0,ty:0,state:'idle',until:2+i*1.8,bubbleUntil:0,target:null,nextState:null,activityState:null}));
 let elapsed=0,last=0,paused=false,mode='auto',modeUntil=0,ready=false,lastChat=0,treat=null,mushrooms=[],picked=0;
 const audioTracks={bgm:document.querySelector('#bgm'),birds:document.querySelector('#birds'),fireplace:document.querySelector('#fireplace')};
-let soundOn=true,audioStarted=false;
+let soundOn=false,audioStarted=false;
 audioTracks.bgm.volume=.24;audioTracks.birds.volume=.035;audioTracks.fireplace.volume=.055;
 function updateSoundButton(){const b=document.querySelector('#sound');b.setAttribute('aria-pressed',String(soundOn));b.setAttribute('aria-label',soundOn?'音をオフにする':'音をオンにする');document.querySelector('#sound-label').textContent=soundOn?'音 ON':'音 OFF';document.querySelector('#sound-icon').textContent=soundOn?'♪':'×';}
 async function startAudio(){if(!soundOn)return false;const results=await Promise.allSettled(Object.values(audioTracks).map(a=>a.play()));audioStarted=results.some(r=>r.status==='fulfilled');return audioStarted;}
@@ -39,7 +39,7 @@ function setSound(value){soundOn=value;updateSoundButton();if(soundOn)startAudio
 function unlockAudio(){if(soundOn&&!audioStarted)startAudio();}
 ['pointerdown','keydown','touchstart'].forEach(type=>document.addEventListener(type,unlockAudio,{once:true,passive:true}));
 document.querySelector('#sound').addEventListener('click',()=>setSound(!soundOn));
-updateSoundButton();startAudio();
+updateSoundButton();
 const rand=(a,b)=>a+Math.random()*(b-a);
 const labels={idle:'のんびり',walk:'おさんぽ中',dance:'ごきげん♪',eat:'もぐもぐ',sleep:'すやすや',rest:'ひとやすみ',happy:'うれしい！',forage:'きのこ採り中'};
 const restPoints=[[.16,.47],[.25,.46],[.55,.41],[.67,.42]];
